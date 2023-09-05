@@ -1,0 +1,64 @@
+
+{% extends 'nammashop/base.html' %}
+{% load static %}
+<!-- <link rel="stylesheet" href="{% static 'nammashop/css/style1.css'%}"> -->
+{% block title %}
+    IthuNammaKadai | online shopping site
+{%endblock title%}
+{% block content %}
+<div class="container" style="margin-top: 70px;">
+<section class="bg-light py-4 my-5" >
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-3" >Cart Products</h4>
+                <hr style="border-color: grey;">
+            </div>
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>Image</th>
+                    <th>Product name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Checkout</th>
+                    <th>Remove</th>
+                </tr>
+                {% for item in cart %}
+                <tr>
+                    <td><img src="{{item.product.product_image.url}}" height="75px" alt="{{item.product.name}}"></td>
+                    <td>{{item.product.name}}</td>
+                    <td>{{item.product_qty}}</td>
+                    <td>{{item.product.selling_price | stringformat:'d'}}</td>
+                    <td class="price">{{item.total_cost | stringformat:'d' }}</td>
+                    <td><a href="{% url 'checkout' item.id %}" onclick="return confirm('Are you sure to Buy?')"><button class="btn btn-success btn-sm"><i class="fa fa-shopping-cart fa-spin" style="color: #FEBD69;"></i>Buy Product</button></a></td>
+                    <td><a href="{% url 'removecart' item.id %}" onclick="return confirm('Are you sure to Remove?')"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Remove Product</button></a></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2"><b>Total Price</b></td>
+                    <td id="net"></td>
+                    <td><a href="#" onclick="return confirm('Are you sure to Buy All?')"><button class="btn btn-success btn-sm"><i class="fa fa-shopping-cart fa-pulse" style="color: #FEBD69;"></i>Buy All Products</button></a></td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<script>
+    const nodes = document.querySelectorAll('.price');
+    const arr= Array.from(nodes);
+    const res = arr.reduce((acc,curr)=>{
+        return acc+= Number(curr.textContent)
+    },0);
+    document.getElementById("net").innerHTML="Rs: "+res;
+</script>
+</div>
+
+{% endblock content %}
+    
+    

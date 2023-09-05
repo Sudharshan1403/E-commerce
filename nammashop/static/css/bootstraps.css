@@ -1,0 +1,69 @@
+
+.external-content{
+    background-color: #232F3E;
+    
+}
+.menu{
+    width: 100vw;
+    height: 40px;
+    color: white;
+    display: flex;
+    align-content: center;
+    
+}
+.material-symbols-outlined{
+    margin-top: 8px;
+    margin-left: 4px;
+}
+small{
+    font-weight: bold;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 9px;
+    margin-left: 4px;
+
+}
+.old_price{
+    color: red;
+    padding: 2px;
+}
+.new_price{
+    color: white;
+    background-color: green;
+    padding: 2px;
+    border-radius: 5px;
+}
+.dropdown-menu{
+    color: white;
+}
+li a{
+    color: white;
+   
+}
+
+
+
+.card a{
+    text-decoration: done;
+    color: white;
+}
+
+.card img:hover{
+    transform: scaleX(0.95);
+}
+.card .btn:active{
+    transform: scaleX(.95);
+}
+nav{
+    position:sticky;
+}
+.pic_box{
+    position: relative;
+}
+.hot{
+    background-color: orangered;
+    color: white;
+
+}
+
+
